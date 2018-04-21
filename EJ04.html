@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/vue"></script>
+        </head>
+    </html>
+    <body>
+   <main>
+       <table>
+           <thead>
+               <th>NOMBRE</th>
+               <th>CEDULA</th>
+               <th>APELLIDO</th>
+               <th>EDAD</th>
+           </thead>
+           <tbody>
+               <tr v-for="(item ,idx) in users">
+                   <td>{{item.nombre}}</td>
+                   <td>{{item.cedula}}</td>
+                   <td>{{iten.apellido}}</td>
+               </tr>
+           </tbody>
+       </table>
+       <form @submit.prevent="createUser" >
+           <imput type="text" placeholder="nombre" v-model="objUser.nombre"/>
+           <imput type="text" placeholder="cedula" v-model="objUser.cedula"/>
+           <imput type="submit" value="GUARDAR"/>
+        </form>
+{{ $data }}
+   </main>     
+    </body>
+    <script type="text/javascript">
+    new Vue({
+        el:'main',
+        data:{
+    users:[
+{'nombre':'MORLA','CEDULA':'DEBORADOR'},
+{'nombre':'GERARDO','apellido':'VERA'},
+{'nombre':'DAVID','apellido':'BURGOS'}
+
+    ]       
+    objuser:{'nombre':null,'apellido':null}
+     },
+     methods:{
+         createUser(){
+             this.users.unshift(this.objUser);
+             this.orderUser;
+this.objUser={'nombre':null,'apellido':null}
+         }
+     },
+     computed:{
+         orderUser(){
+             return this.users.sort(function(a,b){
+                 if(a.nombre >b.nombre){
+                     return 1;
+                 }
+                 if(a.nombre >b.nombre){
+                     return -1;
+                 }
+                 return 0;
+                 });
+             }
+         }
+     }
+    });
+</script>
